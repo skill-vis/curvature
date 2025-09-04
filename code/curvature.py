@@ -6,9 +6,8 @@ from scipy.interpolate import UnivariateSpline
 ################################
 # データディレクトリ
 ################################
-data_dir = '/Users/ohta/Library/CloudStorage/Dropbox/．sync/．SkillVis/Qiita/curvature/data'
+data_dir = '/Users/．．．/curvature/data'
 data = pd.read_csv(data_dir + '/' + 'ball_trajectory.csv', header=0).values
-# data2 = pd.read_csv(data_dir + '/' + 'ball_trajectory_har.csv', header=0).values
 
 ################################
 # Parameters
@@ -157,16 +156,6 @@ unit_principal_normal_vec1 = unit_principal_normal_vec(vel_trim, acc_trim)
 # unit_tangent_vec = unit_tangent_vec(vel_trim)
 curvature_vec1 = data_trim + curvature_radius1[:,np.newaxis] * unit_principal_normal_vec1
 
-
-# data2 = data2[1:]
-# vel2, acc2 = kinematics(data2, sf=sf, weights_a=weight_a, weights_v=weight_v)
-# vel_trim2, acc_trim2 = vel2[1:release_frame], acc2[1:release_frame]
-# data_trim2 = data2[1:release_frame]
-# curvature_radius2 = curvature_radius(vel_trim2, acc_trim2)
-# unit_principal_normal_vec2 = unit_principal_normal_vec(vel_trim2, acc_trim2)
-# # unit_tangent_vec = unit_tangent_vec(vel_trim)
-# curvature_vec2 = data_trim2 + curvature_radius2[:,np.newaxis] * unit_principal_normal_vec2
-
 # Create time array centered at release (t=0)
 t = np.arange(len(vel_trim))/sf - len(vel_trim)/sf
 
@@ -209,16 +198,6 @@ for i in range(1, len(data_trim)-delete_frame):
             [data_trim[i, 1], curvature_vec1[i, 1]], 
             [data_trim[i, 2], curvature_vec1[i, 2]], 
             'k-', linewidth=0.5, alpha=0.3)
-
-
-# ax.scatter(data_trim2[:, 0], data_trim2[:, 1], data_trim2[:, 2], c='green', label='ball trajectory', s=2)
-# ax.scatter(curvature_vec2[1:-delete_frame, 0], curvature_vec2[1:-delete_frame, 1], curvature_vec2[1:-delete_frame, 2], c='green', label='curvature points', s=5)
-# for i in range(1, len(data_trim2)-delete_frame):
-#     ax.plot([data_trim2[i, 0], curvature_vec2[i, 0]], 
-#             [data_trim2[i, 1], curvature_vec2[i, 1]], 
-#             [data_trim2[i, 2], curvature_vec2[i, 2]], 
-#             'k-', linewidth=0.5, alpha=0.3)
-
 
 # Add 'Release' text annotation near the last point of data_trim
 last_point = data_trim[-1]
