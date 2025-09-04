@@ -1,7 +1,7 @@
 # curvature
 野球のボールのモーションキャプチャデータを使用し，ボールの曲率中心の変化（軌道）を計算する，Python解析サンプル
 
-曲率中心については，
+コードの説明や曲率中心については，
 Qiita記事「[Numerical Recipes in Biomechanics #4 空間の曲率中心と力学](https://qiita.com/skill-vis/items/657261e08d7f8452466c)」
 を参照されたい．
 
