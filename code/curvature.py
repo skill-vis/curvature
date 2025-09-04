@@ -2,12 +2,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import UnivariateSpline
+import os
 
 ################################
 # データディレクトリ
 ################################
-data_dir = '/Users/．．．/curvature/data'
-data = pd.read_csv(data_dir + '/' + 'ball_trajectory.csv', header=0).values
+script_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(script_dir, '../data', 'ball_trajectory.csv')
+data = pd.read_csv(data_dir, header=0).values
 
 ################################
 # Parameters
