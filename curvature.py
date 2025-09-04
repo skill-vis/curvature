@@ -6,7 +6,7 @@ from scipy.interpolate import UnivariateSpline
 ################################
 # データディレクトリ
 ################################
-data_dir = '/Users/ohta/Library/CloudStorage/Dropbox/．sync/．SkillVis/Qiita/curvature'
+data_dir = '...'
 data = pd.read_csv(data_dir + '/' + 'ball_trajectory_sar.csv', header=0).values
 
 ################################
