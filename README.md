@@ -37,16 +37,16 @@ ball_trajectory.csvデータは最大外旋位（MER）からリリース後10�
 リリース前は曲率半径が大きくなるので（理論上無限大），リリースの３フレーム前まで描いている．
 
 # 曲率とその力学に関係する式のまとめ
-##### 曲率
+### 曲率
 $$
 \kappa = \frac{1}{R} = \frac{|\boldsymbol{a} \times \boldsymbol{v}|}{|\boldsymbol{v}|^3}
 $$
-##### 単位主法線ベクトル
+### 単位主法線ベクトル
 $$
 \boldsymbol{n}  = \frac{\boldsymbol{v} \times (\boldsymbol{a} \times \boldsymbol{v})}{|\boldsymbol{v}| ~|\boldsymbol{a} \times \boldsymbol{v}|}
 $$
 
-##### 接線方向の加速度
+### 接線方向の加速度
 $$
 \begin{aligned}
 \boldsymbol{a}_{\parallel} &= (\boldsymbol{a}^T \boldsymbol{T})\boldsymbol{T} = \left( \boldsymbol{a}^T \frac{\boldsymbol{v}}{|\boldsymbol{v}|} \right) \frac{\boldsymbol{v}}{|\boldsymbol{v}|}
@@ -55,16 +55,16 @@ $$
 \end{aligned}
 $$
 
-##### 主法線方向（半径）の加速度
+### 主法線方向（半径）の加速度
 $$
 \begin{aligned}
-a_{\perp} &= \pmb{a} - a_{\parallel}
+\pmb{a}_{\perp} &= \pmb{a} - \pmb{a}_{\parallel}
 \\\\
 &= \frac{\boldsymbol{v} \times (\boldsymbol{a} \times \boldsymbol{v})}{|\boldsymbol{v}|^2}
 \end{aligned}
 $$
 
-##### 曲率中心
+### 曲率中心
 $$
 \begin{aligned}
 \boldsymbol{C}(t) &= \boldsymbol{x}(t) + \frac{1}{\kappa(t)}\boldsymbol{n}(t) = \boldsymbol{x}(t) + R(t) \boldsymbol{n}(t)
