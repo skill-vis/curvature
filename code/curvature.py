@@ -223,6 +223,13 @@ for i in range(len(data_trim)-20, len(data_trim)-delete_frame, 2):
             [data_trim[i, 1], data_trim[i, 1] + acc_centripetal[i, 1]*scale],
             [data_trim[i, 2], data_trim[i, 2] + acc_centripetal[i, 2]*scale],
             color='blue', alpha=0.5, label='Centripetal force' if i==len(data_trim)-20 else "")
+    
+    # Plot total acceleration vector (orange)
+    ax.plot([data_trim[i, 0], data_trim[i, 0] + acc_trim[i, 0]*scale],
+            [data_trim[i, 1], data_trim[i, 1] + acc_trim[i, 1]*scale],
+            [data_trim[i, 2], data_trim[i, 2] + acc_trim[i, 2]*scale],
+            color='orange', alpha=0.5, label='Resultant force' if i==len(data_trim)-20 else "")
+
 
 # Add 'Release' text annotation near the last point of data_trim
 last_point = data_trim[-1]
