@@ -136,7 +136,7 @@ def unit_principal_normal_vec(vel, acc):
 
 # 単位接線ベクトル
 def unit_tangent_vec(vel):
-    return vel / norm(vel)
+    return vel / norm(vel)[:,np.newaxis]
 
 # 曲率ベクトル
 def curvature_vec(vel, acc):
@@ -153,10 +153,16 @@ release_frame = -10
 vel, acc = kinematics(data, sf=sf, weights_a=weight_a, weights_v=weight_v)
 vel_trim, acc_trim = vel[1:release_frame], acc[1:release_frame]
 data_trim = data[1:release_frame]
-curvature_radius1 = curvature_radius(vel_trim, acc_trim)
-unit_principal_normal_vec1 = unit_principal_normal_vec(vel_trim, acc_trim)
-# unit_tangent_vec = unit_tangent_vec(vel_trim)
-curvature_vec1 = data_trim + curvature_radius1[:,np.newaxis] * unit_principal_normal_vec1
+curvature_radius1 = curvature_radius(vel_trim, acc_trim) # 曲率半径
+unit_principal_normal_vec1 = unit_principal_normal_vec(vel_trim, acc_trim) # 単位主法線ベクトル
+unit_tangent_vec1 = unit_tangent_vec(vel_trim) # 接線ベクトル
+curvature_vec1 = data_trim + curvature_radius1[:,np.newaxis] * unit_principal_normal_vec1 # 曲率ベクトル
+
+# 接線方向の加速度
+acc_tangent = dot_product(acc_trim, unit_tangent_vec1)[:,np.newaxis] * unit_tangent_vec1
+
+# 向心加速度
+acc_centripetal = acc_trim - acc_tangent
 
 # Create time array centered at release (t=0)
 t = np.arange(len(vel_trim))/sf - len(vel_trim)/sf
@@ -201,6 +207,23 @@ for i in range(1, len(data_trim)-delete_frame):
             [data_trim[i, 2], curvature_vec1[i, 2]], 
             'k-', linewidth=0.5, alpha=0.3)
 
+# Plot acceleration vectors every 10 frames
+for i in range(len(data_trim)-20, len(data_trim)-delete_frame, 2):
+    # Scale factor for better visualization
+    scale = 0.001
+    
+    # Plot tangential acceleration vector (red)
+    ax.plot([data_trim[i, 0], data_trim[i, 0] + acc_tangent[i, 0]*scale],
+            [data_trim[i, 1], data_trim[i, 1] + acc_tangent[i, 1]*scale],
+            [data_trim[i, 2], data_trim[i, 2] + acc_tangent[i, 2]*scale],
+            color='red', alpha=0.5, label='Tangential force' if i==len(data_trim)-20 else "")
+              
+    # Plot centripetal acceleration vector (blue) 
+    ax.plot([data_trim[i, 0], data_trim[i, 0] + acc_centripetal[i, 0]*scale],
+            [data_trim[i, 1], data_trim[i, 1] + acc_centripetal[i, 1]*scale],
+            [data_trim[i, 2], data_trim[i, 2] + acc_centripetal[i, 2]*scale],
+            color='blue', alpha=0.5, label='Centripetal force' if i==len(data_trim)-20 else "")
+
 # Add 'Release' text annotation near the last point of data_trim
 last_point = data_trim[-1]
 # Add 'Release' text at the last point
@@ -215,6 +238,9 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 # Set the viewing angle
 ax.view_init(elev=30, azim=170)  # elev: elevation angle, azim: azimuth angle
+
+# Set z-axis minimum to 0
+ax.set_zlim(bottom=0)
 
 ax.set_aspect('equal')
 ax.legend()
