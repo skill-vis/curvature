@@ -20,7 +20,12 @@ curvature/
 codeディレクトリ下にPythonコード**curvature.py**を配置し，dataディレクトリ下にサンプルデータの**ball_trajectory.csv**を置いた．
 また，この変更に応じ，Pythonコード**curvature.py**のディレクトリをos.path.dirname()で設定し，そこからdataディレクトリに移動し，サンプルデータの**ball_trajectory.csv**を読み込むように変更した．
 
-curvature.pyは，実際に約140km/hの投球時のモーションキャプチャ（1kHz）で計測したボールの重心の位置データを利用し，曲率計算を計算するコードである．データは最大外旋位（MER）からリリース後10フレーム（10ms）までの，ボールの空間軌道データを下記にアップした．おおよそXの正の方向へ飛翔する投球データである．
+curvature.pyは，実際に約140km/hの投球時のモーションキャプチャ（1kHz）で計測したボールの重心の位置データball_trajectory.csvを利用し，曲率計算行うコードである．
+
+ball_trajectory.csvデータは最大外旋位（MER）からリリース後10フレーム（10ms）までの，ボールの空間軌道データを下記にアップした．おおよそXの正の方向へ飛翔する野球の投球データで，多点のマーカをボールに貼付し，モーションキャプチャ（1kHzでサンプリング）で計測したその多点位置から非線形最適化（Levenberg-Marquardt法）でボールの中心（重心相当）を計算したデータである．ball_trajectory.csvデータ自体は平滑化はしていない．
+
+<img width="314" height="301" alt="ball_with_marker" src="https://github.com/user-attachments/assets/3d000190-86c3-43a0-8074-e02894d3f808" />
+
 
 コードを実行すると，「ボールの速度のグラフ」と，「ボールと曲率中心の３D軌道のグラフ」を描画できる．
 
