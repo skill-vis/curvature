@@ -31,6 +31,7 @@ ball_trajectory.csvデータは最大外旋位（MER）からリリース後10�
 
 <img width="640" height="480" alt="Figure_1" src="https://github.com/user-attachments/assets/431ef70a-9b00-46f2-8235-0358837dee1c" />
 
-<img width="1000" height="800" alt="Figure_2" src="https://github.com/user-attachments/assets/eb79680f-7018-4deb-8f87-b614c9e5ec44" />
+<img width="1000" height="800" alt="Figure_2" src="https://github.com/user-attachments/assets/18b81cbd-c882-42bc-95ff-0ba8050f258d" />
+
 
 リリース前は曲率半径が大きくなるので（理論上無限大），リリースの３フレーム前まで描いている．
