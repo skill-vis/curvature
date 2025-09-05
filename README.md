@@ -58,7 +58,7 @@ $$
 ### 主法線方向（半径）の加速度
 $$
 \begin{aligned}
-\pmb{a}_{\perp} &= \pmb{a} - \pmb{a}_{\parallel}
+\boldsymbol{a}_{\perp} &= \boldsymbol{a} - \boldsymbol{a}_{\parallel}
 \\\\
 &= \frac{\boldsymbol{v} \times (\boldsymbol{a} \times \boldsymbol{v})}{|\boldsymbol{v}|^2}
 \end{aligned}
@@ -73,7 +73,7 @@ $$
 |\boldsymbol{v}|^2 ~\frac{\boldsymbol{v} \times (\boldsymbol{a} \times \boldsymbol{v})}{|\boldsymbol{a} \times \boldsymbol{v}|^2}
 \\\\
 &= \boldsymbol{x}(t) + \frac{|\boldsymbol{v}|^3}{|\boldsymbol{a} \times \boldsymbol{v}|}
-\left(\frac{\pmb{a} - a_{\parallel}}{|\pmb{a} - a_{\parallel}|} \right)= \boldsymbol{x}(t) + \frac{|\boldsymbol{v}|^3}{|\boldsymbol{a} \times \boldsymbol{v}|}
-\frac{\pmb{a} - (\boldsymbol{a}^T \boldsymbol{T})\boldsymbol{T}}{|\pmb{a} - (\boldsymbol{a}^T \boldsymbol{T})\boldsymbol{T}|}
+\left(\frac{\boldsymbol{a} - \boldsymbol{a}_{\parallel}}{|\pmb{a} - \boldsymbol{a}_{\parallel}|} \right)= \boldsymbol{x}(t) + \frac{|\boldsymbol{v}|^3}{|\boldsymbol{a} \times \boldsymbol{v}|}
+\frac{\boldsymbol{a} - (\boldsymbol{a}^T \boldsymbol{T})\boldsymbol{T}}{|\pmb{a} - (\boldsymbol{a}^T \boldsymbol{T})\boldsymbol{T}|}
 \end{aligned}
 $$
